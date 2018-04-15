@@ -1,0 +1,76 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="root">
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+{{ subtitle }}
+</div>
+
+  <h1>All the Tasks!</h1>
+  <ul>
+    <li *ngFor="let task of tasks">{{ task.title }}: {{ task.description }}</li>
+  </ul><br/>
+
+  <div *ngFor="let task of tasks; let i=index">
+    <div *ngIf="i == 2">
+      <h1>The THIRD Task</h1>
+      #{{i+1}}: {{ task.title }}: {{ task.description }}
+    </div>
+  </div>
+
+  <div>
+    <h3>This is going to be a form</h3>
+    <p> {{ newTask | json }} </p>
+    <form (submit)="onSubmit()" onsubmit="return false">
+      <!-- use the json pipe to see how newTask changes in real time -->
+      <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+      <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+      <input type="submit" value="Create Task" />
+    </form>
+  </div>
+
+
+
+<h2>
+  <button (click)="helloButton()">Hello Button :)</button></h2><br/>
+
+  <button (click)="onButtonClick()" >Click me!</button>
+  <button (click)="onButtonClickParam(5)">Click me!</button>
+  <button (click)="onButtonClickParams(5, 'hello')">Click me!</button>
+  <button (click)="onButtonClickEvent($event)">Click me!</button>
+  <br/>
+  <h3>Get task</h3>
+  <input #task_id type="text" name="task_id" (keyup.enter)="getTaskById('5ace53db9e53309f623dfb04')"/>
+
+  <h4><button (click)="getTasksFromService()">Get Tasks</button></h4>
+  <h4><button (click)="getTaskById('5ace53db9e53309f623dfb04')">Get task: 5ace53db9e53309f623dfb04</button></h4>
+  <h4><input [value]="tasks">changed input value with data binding</h4>
+  <!--make the object ID more user-friendly-->
+  <!--<h4><button (click)="updateTask('5acfd6c9c2cb138bb36f84d7', {'title':'really Important task!!!', 'description':'This is probably the MOST important thing ever'})">update task: 5acfd6c9c2cb138bb36f84d7</button></h4>-->
+  <h4><button (click)="createTask({'title':'SUPER SUPER REALLY Important task!!!', 'description':'This is probably the MOST important thing ever...again'})">Create new task</button></h4>
+  <h4><button (click)="updateTask('5acfd6c9c2cb138bb36f84d7', {'completed':true})">update task: 5acfd6c9c2cb138bb36f84d7</button></h4>
+  <h4><button (click)="deleteTask('5ace53db9e53309f623dfb04')">Delete task: 5ace53db9e53309f623dfb04</button></h4>
+  <!--<h4><button *ngFor="let $first_task=first_task;" (click)="getTaskById('{{$first_task}}')">Get task: 5ace53db9e53309f623dfb04 ||   {{ first_task }}</button></h4>-->
+
+
+  <div>
+    <ul>
+      <li *ngFor="let task of tasks">{{task.description}}</li>
+      <li *ngFor="let task of tasks">{{ task | json }}</li>
+    </ul>
+  </div>
+<h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul>
+</div>
