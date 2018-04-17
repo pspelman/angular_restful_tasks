@@ -11,8 +11,8 @@ var bodyParser = require('body-parser')
 require('./models/Tasks');
 
 var taskRouter = require('./routes/tasks');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
 
 
 var mongoose = require('mongoose');
@@ -36,6 +36,7 @@ app.use(bodyParser.json());
 app.get('/', function (req, res) {
     res.redirect('/tasks')
 });
+
 app.use('/', taskRouter);
 
 app.use(function (req, res, next) {

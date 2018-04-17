@@ -1,3 +1,38 @@
 .root{
   border: 3px solid orange;
 }
+
+
+.crud_task_div {
+  width: 90%;
+  border: 2px solid black;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.task_creation_form{
+  display: inline-block;
+  border: 2px solid royalblue;
+  width: 40%;
+
+}
+.task_edit_form{
+  display: inline-block;
+  border: 2px solid royalblue;
+  width: 40%;
+  vertical-align: top;
+}
+
+.tasks{
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+button{
+  background-color: dodgerblue;
+  color: #ddcb5d;
+  /*outline-color: greenyellow;*/
+  text-shadow: 2px 2px #000;
+  font-size: 18px;
+}

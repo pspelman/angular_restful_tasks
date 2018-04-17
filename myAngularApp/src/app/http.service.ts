@@ -35,9 +35,9 @@ export class HttpService {
 
   getTaskById(task_id){
     //sample _id: "5ace53db9e53309f623dfb04"
-    let tempObservable = this._http.get(`/tasks/${task_id}`);
-
-    tempObservable.subscribe(data => console.log(`Subscription delivered data (individual task)`,data));
+    return this._http.get(`/tasks/${task_id}`);
+    // let tempObservable = this._http.get(`/tasks/${task_id}`);
+    // tempObservable.subscribe(data => console.log(`Subscription delivered data (individual task)`,data));
 
   }
 
@@ -62,26 +62,44 @@ export class HttpService {
   }
 
 
+// old version
+//   updateTask(task_id, updated_task_info){
+//     console.log(`placeholder for sending new PUT request to server`,);
+//     //= {'title':'phil','description':'phil tasks','completed':true}
+//     console.log(`Updated info for task recieved...attempting to update`,updated_task_info);
+//     console.log(`Data for new tasK:`,updated_task_info);
+//     let url = `/tasks/${task_id}`;
+//     this._http.put(url, updated_task_info)
+//       .subscribe(res => console.log(res));
+//   }
 
-  updateTask(task_id, updated_task_info){
+  updateTask(task_to_update){
     console.log(`placeholder for sending new PUT request to server`,);
     //= {'title':'phil','description':'phil tasks','completed':true}
-    console.log(`Updated info for task recieved...attempting to update`,updated_task_info);
-    console.log(`Data for new tasK:`,updated_task_info);
-    let url = `/tasks/${task_id}`;
-    this._http.put(url, updated_task_info)
-      .subscribe(res => console.log(res));
-
+    console.log(`Updated info for task recieved...attempting to update`,task_to_update);
+    // console.log(`Data for new tasK:`,task_to_update);
+    let url = `/tasks/${task_to_update._id}`;
+    return this._http.put(url, task_to_update);
+    //   .subscribe(res => console.log(res));
+    //
   }
 
-  deleteTask(task_id) {
-    console.log(`attempting to send DELETE request to server`,);
-    let url = `/tasks/${task_id}`;
-    this._http.delete(url)
-      .subscribe(res => console.log(res));
 
-    //delete request
+  //SERVICE FILE
+  // THIS IS OPTION A
+  // deleteTask(task_id) {
+  //   console.log(`attempting to send DELETE request to server`,);
+  //   let url = `/tasks/${task_id}`;
+  //   this._http.delete(url)
+  //     .subscribe(res => console.log(res));
+  // }
+
+  //TODO: THIS IS OPTION B
+  deleteTask(task_id){
+    let url = `/tasks/${task_id}`;
+    return this._http.delete(url);
   }
+
 
 
 
